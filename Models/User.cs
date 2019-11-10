@@ -13,14 +13,14 @@ namespace CRUD.Models
         [MinLength(3)]
         [Required]
         public string Name { get; set; }
-        
-        [Range(1,121)]
-        public int  Age { get; set; }
-        
+
+        [Range(1, 121)]
+        public int Age { get; set; }
+
         [Phone]
         [Required]
         public string PhoneNumber { get; set; }
-        
+
         [EmailAddress]
         [Required]
         public string Email { get; set; }
