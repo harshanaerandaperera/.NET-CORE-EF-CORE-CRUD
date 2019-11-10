@@ -1,3 +1,5 @@
+using CRUD.Models;
+using CRUD.Models.DataManager;
 using CRUD.Models.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +23,7 @@ namespace CRUD
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RepositoryContext>(options => options.UseSqlServer(Configuration["ConnectionString:DB"]));
+            services.AddScoped<IDataRepository<User>, UserManager>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
