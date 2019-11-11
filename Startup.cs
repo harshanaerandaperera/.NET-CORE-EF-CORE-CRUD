@@ -1,3 +1,4 @@
+using System.IO;
 using CRUD.Models;
 using CRUD.Models.DataManager;
 using CRUD.Models.Repository;
@@ -27,7 +28,12 @@ namespace CRUD
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
+                //The generated Swagger JSON file will have these properties.
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "CRUD API", Version = "v1" });
+
+                // Configure Swagger to use the xml documentation file
+                var xmlFile = Path.ChangeExtension(typeof(Startup).Assembly.Location, ".xml");
+                c.IncludeXmlComments(xmlFile);
             });
         }
 
